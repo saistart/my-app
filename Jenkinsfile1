@@ -2,7 +2,7 @@ node{
    stage('Git Checkout'){
    git 'https://github.com/saistart/my-app'   
    }
-   stage('Maven Build'){
+   stage('Compile Package'){
    sh 'mvn package'
    }
 }
