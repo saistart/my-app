@@ -1,4 +1,4 @@
-node{t
+node{
    stage('Git Checkout'){
    git 'https://github.com/saistart/my-app'   
    }
