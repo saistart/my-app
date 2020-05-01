@@ -23,7 +23,7 @@ node{
    How are you doing?? Please dont panic...this for testing email setup in Jenkins .... :) :) :)
 
    Thanks,
-   Sai''', cc: 'ghanshyamkhetan@gmail.com', from: '', replyTo: '', subject: 'This is Testing mail from JENKINS', to: 'sandy.cld0108@gmail.com'
+   Sai''', from: '', replyTo: '', subject: 'This is Testing mail from JENKINS', to: 'sandy.cld0108@gmail.com'
    }
    stage('Slack Notifications'){
    slackSend baseUrl: 'https://hooks.slack.com/services/', 
