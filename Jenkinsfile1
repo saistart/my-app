@@ -15,4 +15,12 @@ node{
    Thanks,
    Sai''', cc: 'ghanshyamkhetan@gmail.com', from: '', replyTo: '', subject: 'This is Testing mail from JENKINS', to: 'sandy.cld0108@gmail.com'
    }
+   stage('Slack Notifications'){
+   slackSend baseUrl: 'https://hooks.slack.com/services/', 
+   channel: '#jenkins-pipeline-demo', 
+   color: 'Good', 
+   message: 'Welcome Sai to Jenkins, Slack!', 
+   teamDomain: 'sai-ink4593', 
+   tokenCredentialId: 'slack-demo'
+   }
 }
