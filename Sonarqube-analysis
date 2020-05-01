@@ -1,0 +1,36 @@
+currentBuild.displayName='SaiBuild#'+currentBuild.number
+node{
+   stage('Git Checkout'){
+   git 'https://github.com/saistart/my-app'   
+   }
+   stage('Compile Package'){
+   def mvnhome = tool name: 'maven-3', type: 'maven'
+   sh "${mvnhome}/bin/mvn package"
+   }
+   stage('Sonarqube analysis'){
+   def mvnhome = tool name: 'maven-3', type: 'maven'
+   withSonarQubeEnv('sonar-6'){
+   sh "${mvnhome}/bin/mvn sonar:sonar"  
+     
+     
+     }
+   }
+   
+   
+   stage('Email Notification'){
+   mail bcc: '', body: '''Hi Sirji,
+
+   How are you doing?? Please dont panic...this for testing email setup in Jenkins .... :) :) :)
+
+   Thanks,
+   Sai''', cc: 'ghanshyamkhetan@gmail.com', from: '', replyTo: '', subject: 'This is Testing mail from JENKINS', to: 'sandy.cld0108@gmail.com'
+   }
+   stage('Slack Notifications'){
+   slackSend baseUrl: 'https://hooks.slack.com/services/', 
+   channel: '#jenkins-pipeline-demo', 
+   color: 'Good', 
+   message: 'Welcome Sai to Jenkins, Slack!', 
+   teamDomain: 'sai-ink4593', 
+   tokenCredentialId: 'slack-demo'
+   }
+}
